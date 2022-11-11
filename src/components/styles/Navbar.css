@@ -1,0 +1,12 @@
+.navbar {
+    padding: 2%;
+    margin: 0px;
+}
+
+.logo {
+    width: 15rem;
+}
+
+.logo:hover {
+    opacity: 80%;
+}
