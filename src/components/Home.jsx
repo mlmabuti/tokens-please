@@ -20,7 +20,7 @@ function Home(){
                 
                 <Alert severity='info'>{"Testing"}</Alert> 
 
-                <TextField sx={{margin:"1rem"}} id="outlined-basic" label="Enter single line code" variant="outlined" />
+                <TextField sx={{marginTop: "1rem", marginBottom:"1rem"}} id="outlined-basic" label="Enter single line code" variant="outlined" />
 
                 <Button sx={buttonAttributes} variant='contained' startIcon={<TokenizerIcon/>}>Tokenizer</Button>
 
