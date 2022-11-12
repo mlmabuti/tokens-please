@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <center>
-      <Container sx={{margin:"2%"}}>
+      <Container sx={{marginTop:"1%"}}>
       <Card variant="outlined">
       <Navbar />
       <Home />
