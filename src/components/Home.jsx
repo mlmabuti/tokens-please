@@ -25,9 +25,9 @@ const buttons = [
 
 function Home() {
   return (
-    <Container sx={{ padding: "3rem", minHeight: "70vh" }}>
+    <Container sx={{ minHeight: "64vh" }}>
       <center>
-        <Stack>
+        <Stack sx={{padding:"3rem"}}>
           <Card variant="outlined">
             <h2 id="answer">placeholder</h2>
           </Card>

@@ -7,6 +7,7 @@ function Footer() {
     <>
       <center>
         <Stack
+        sx={{padding:"1rem"}}
           direction="row"
           justifyContent="center"
           alignItems="center"
