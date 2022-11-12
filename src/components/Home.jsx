@@ -1,41 +1,59 @@
-import './styles/Home.css'
-import {Alert, Button, Container, TextField, Stack} from '@mui/material/';
-import TokenizerIcon from '@mui/icons-material/Toll';
-import ArrowDown from '@mui/icons-material/ArrowDownwardSharp';
-import ParserIcon from '@mui/icons-material/ManageSearch';
-import AnalyzerIcon from '@mui/icons-material/Spellcheck';
+import {
+  Alert,
+  Button,
+  ButtonGroup,
+  TextField,
+  Stack,
+  Card,
+  Container,
+} from "@mui/material/";
+import TokenizerIcon from "@mui/icons-material/Toll";
+import ParserIcon from "@mui/icons-material/ManageSearch";
+import AnalyzerIcon from "@mui/icons-material/Spellcheck";
 
-const buttonAttributes = {
-    alignSelf: "center",
-    margin: ".5rem"
-}
+const buttons = [
+  <Button color="primary" endIcon={<TokenizerIcon />}>
+    Lexical Analysis
+  </Button>,
+  <Button color="secondary" endIcon={<ParserIcon />}>
+    Syntax Analysis
+  </Button>,
+  <Button color="warning" endIcon={<AnalyzerIcon />}>
+    Semantic Analysis
+  </Button>,
+];
 
+function Home() {
+  return (
+    <Container sx={{ padding: "3rem", minHeight: "70vh" }}>
+      <center>
+        <Stack>
+          <Card variant="outlined">
+            <h2 id="answer">placeholder</h2>
+          </Card>
 
-function Home(){
-    return (
-        <div className="home">
-            <Container className='container'>   
-                <Stack>
-                <h2>TEST</h2>
-                
-                <Alert severity='info'>{"Testing"}</Alert> 
+          <Alert sx={{ marginTop: "1rem" }} severity="info">
+            {"Testing"}
+          </Alert>
 
-                <TextField sx={{marginTop: "1rem", marginBottom:"1rem"}} id="outlined-basic" label="Enter single line code" variant="outlined" />
+          <TextField
+            sx={{ marginTop: ".5rem" }}
+            id="outlined-basic"
+            label="Enter single line code"
+            variant="outlined"
+          />
+        </Stack>
 
-                <Button sx={buttonAttributes} variant='contained' startIcon={<TokenizerIcon/>}>Tokenizer</Button>
-
-                <ArrowDown sx={{alignSelf:"center"}}/>
-
-                <Button sx={buttonAttributes} variant='contained' startIcon={<ParserIcon/>}>Parser</Button>
-
-                <ArrowDown sx={{alignSelf:"center"}}/>
-
-                <Button sx={buttonAttributes} variant='contained' startIcon={<AnalyzerIcon/>}>Semantic Analyzer</Button>
-
-                </Stack>
-            </Container>
-        </div>
-    );
+        <ButtonGroup
+          orientation="horizontal"
+          variant="contained"
+          sx={{ marginTop: "1rem" }}
+        >
+          {buttons}
+        </ButtonGroup>
+      </center>
+    </Container>
+  );
 }
 
 export default Home;

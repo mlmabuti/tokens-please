@@ -1,14 +1,13 @@
-import { Container } from '@mui/system';
-import './styles/Navbar.css'
+import "./styles/Navbar.css";
 
-function Navbar(){
-    return (
-        <div className='navbar'>
-            <Container>
-                <img className="logo" src="Logo.png" alt="logo" />
-            </Container>
-        </div>
-    );
+function Navbar() {
+  return (
+    <>
+      <center>
+        <img className="logo" src="Logo.png" alt="logo" />
+      </center>
+    </>
+  );
 }
 
 export default Navbar;

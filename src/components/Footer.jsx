@@ -1,16 +1,23 @@
-import { Button } from '@mui/material';
-import { Container } from '@mui/system';
-import './styles/Footer.css'
+import Help from "./Help";
+import About from "./About"
+import { Stack } from "@mui/system";
 
-function Footer(){
-    return (
-    <div className="footer">
-        <Container>
-        <Button>About</Button>
-        <Button>Help</Button>
-        </Container>
-    </div>
-    );
+function Footer() {
+  return (
+    <>
+      <center>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+        >
+          <Help />
+          <About/>
+        </Stack>
+      </center>
+    </>
+  );
 }
 
 export default Footer;

@@ -1,10 +1,6 @@
-.navbar {
-    padding: 2%;
-    margin: 0px;
-}
-
 .logo {
     width: 15rem;
+    margin: 1.4rem;
 }
 
 .logo:hover {
