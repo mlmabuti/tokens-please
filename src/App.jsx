@@ -6,13 +6,15 @@ import Navbar from "./components/Navbar.jsx";
 function App() {
   return (
     <>
-      <Container sx={{marginTop:"1rem"}}>
+      <center>
+      <Container sx={{margin:"2%"}}>
       <Card variant="outlined">
       <Navbar />
       <Home />
       <Footer />
       </Card>
       </Container>
+      </center>
     </>
   );
 }

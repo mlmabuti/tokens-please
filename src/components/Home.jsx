@@ -27,7 +27,7 @@ function Home() {
   return (
     <Container sx={{ minHeight: "64vh" }}>
       <center>
-        <Stack sx={{padding:"3rem"}}>
+        <Stack sx={{padding:"4%"}}>
           <Card variant="outlined">
             <h2 id="answer">placeholder</h2>
           </Card>
@@ -47,7 +47,6 @@ function Home() {
         <ButtonGroup
           orientation="horizontal"
           variant="contained"
-          sx={{ marginTop: "1rem" }}
         >
           {buttons}
         </ButtonGroup>
