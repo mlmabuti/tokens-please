@@ -21,9 +21,11 @@ function Home() {
         <Typography variant="h5" fontWeight="600">
           {"Let me see your tokens 🪙"} 
         </Typography>
-
-        <Alert severity="info" sx={{ marginTop: "2%", padding: ".4%" }}>
-          {"Information"}
+    
+        <Alert icon={false} severity="info" sx={{ marginTop: "2%"}}>
+          {"Tokens, Please! is a single line code analyzer based on the first three stages of the compilation process. "+
+          "This program only accounts for declarations and assignment operations. Here is the list of recognized data types; " +
+          "String, int, char, boolean, double, and float."}
         </Alert>
 
         <TextField
@@ -31,7 +33,7 @@ function Home() {
           placeholder={'String str = "Hello World !";'}
           fullWidth
           label="Enter single line code"
-          sx={{ marginTop: "1%" }}
+          margin="normal"
         />
 
         <Grid
@@ -39,7 +41,6 @@ function Home() {
           spacing={1}
           justifyContent="center"
           alignItems="center"
-          sx={{ marginTop: "1%" }}
         >
           <Grid item>
             <Button variant="contained" endIcon={<TokenizerIcon />}>
