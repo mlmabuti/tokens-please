@@ -3,54 +3,59 @@ import {
   Button,
   ButtonGroup,
   TextField,
-  Stack,
   Card,
   Container,
+  Typography,
+  Paper,
 } from "@mui/material/";
 import TokenizerIcon from "@mui/icons-material/Toll";
 import ParserIcon from "@mui/icons-material/ManageSearch";
 import AnalyzerIcon from "@mui/icons-material/Spellcheck";
 
+let output = "?";
+
 const buttons = [
-  <Button color="primary" endIcon={<TokenizerIcon />}>
-    Lexical Analysis
-  </Button>,
-  <Button color="secondary" endIcon={<ParserIcon />}>
-    Syntax Analysis
-  </Button>,
-  <Button color="warning" endIcon={<AnalyzerIcon />}>
-    Semantic Analysis
-  </Button>,
+  <Button endIcon={<TokenizerIcon />}>Lexical Analysis</Button>,
+  <Button endIcon={<ParserIcon />}>Syntax Analysis</Button>,
+  <Button endIcon={<AnalyzerIcon />}>Semantic Analysis</Button>,
 ];
 
 function Home() {
   return (
-    <Container sx={{ minHeight: "64vh" }}>
-      <center>
-        <Stack sx={{padding:"4%"}}>
-          <Card variant="outlined">
-            <h2 id="answer">placeholder</h2>
-          </Card>
+    <Container>
+      <Paper elevation="4" sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
+        <Typography variant="h5" fontWeight="600">
+          Let me see your tokens
+        </Typography>
 
-          <Alert sx={{ marginTop: "1rem" }} severity="info">
-            {"Testing"}
-          </Alert>
+        <Alert severity="info" sx={{ marginTop: "1%", padding: ".1%" }}>
+          {"Information"}
+        </Alert>
 
-          <TextField
-            sx={{ marginTop: ".5rem" }}
-            id="outlined-basic"
-            label="Enter single line code"
-            variant="outlined"
-          />
-        </Stack>
+        <TextField
+          variant="outlined"
+          placeholder={'String str = "Hello World !";'}
+          fullWidth
+          label="Enter single line code"
+          sx={{ marginTop: ".5%" }}
+        />
 
-        <ButtonGroup
-          orientation="horizontal"
-          variant="contained"
-        >
+        <ButtonGroup variant="contained" sx={{ marginTop: "1%" }}>
           {buttons}
         </ButtonGroup>
-      </center>
+
+        <Typography variant="h5" fontWeight="600" sx={{ marginTop: "2%" }}>
+          Output
+        </Typography>
+
+        <Card variant="outlined"
+          sx={{ padding: "3%", margin: "1% 0% 2%" }}
+        >
+          <Typography variant="string" fontFamily="roboto" fontSize="1.5rem">
+            {output}
+          </Typography>
+        </Card>
+      </Paper>
     </Container>
   );
 }

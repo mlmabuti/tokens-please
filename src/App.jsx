@@ -1,19 +1,15 @@
-import { Card, Container } from "@mui/material";
 import Footer from "./components/Footer.jsx";
 import Home from "./components/Home.jsx";
 import Navbar from "./components/Navbar.jsx";
+import "@fontsource/roboto/400.css";
 
 function App() {
   return (
     <>
       <center>
-      <Container sx={{marginTop:"1%"}}>
-      <Card variant="outlined">
-      <Navbar />
-      <Home />
-      <Footer />
-      </Card>
-      </Container>
+        <Navbar />
+        <Home />
+        <Footer />
       </center>
     </>
   );

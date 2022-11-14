@@ -1,23 +1,14 @@
-import Help from "./Help";
-import About from "./About"
-import { Stack } from "@mui/system";
+import { Container, ButtonGroup, Button } from "@mui/material";
 
 function Footer() {
   return (
-    <>
-      <center>
-        <Stack
-        sx={{padding:"1rem"}}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={1}
-        >
-          <Help />
-          <About/>
-        </Stack>
-      </center>
-    </>
+    <Container>
+      <ButtonGroup direction="row" alignContent="center" >
+        <Button variant="string">GitHub</Button>
+        <Button variant="string">About</Button>
+      <Button variant="disabled">Powered by React</Button>
+      </ButtonGroup>
+    </Container>
   );
 }
 
