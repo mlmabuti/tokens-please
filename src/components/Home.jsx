@@ -28,7 +28,7 @@ function Home() {
           Let me see your tokens
         </Typography>
 
-        <Alert severity="info" sx={{ marginTop: "1%", padding: ".1%" }}>
+        <Alert severity="info" sx={{ marginTop: "2%", padding: ".1%" }}>
           {"Information"}
         </Alert>
 
