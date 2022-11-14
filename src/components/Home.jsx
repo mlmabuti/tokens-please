@@ -19,7 +19,7 @@ function Home() {
     <Container>
       <Paper elevation={4} sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
         <Typography variant="h5" fontWeight="600">
-          Let me see your tokens 🪙
+          {"Let me see your tokens 🪙"} 
         </Typography>
 
         <Alert severity="info" sx={{ marginTop: "2%", padding: ".4%" }}>
