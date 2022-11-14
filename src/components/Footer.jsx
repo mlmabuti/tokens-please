@@ -1,11 +1,14 @@
-import { Container, ButtonGroup, Button } from "@mui/material";
+import { Link, Container, ButtonGroup, Button } from "@mui/material";
 
 function Footer() {
   return (
     <Container>
-      <ButtonGroup direction="row" alignContent="center" >
-        <Button variant="string">GitHub</Button>
-        <Button variant="string">About</Button>
+      <ButtonGroup >
+        <Button variant="string"> 
+        <Link href="https://github.com/axojolotl/tokens-please" color="inherit" underline="hover">
+         {"GitHub"}
+        </Link>
+        </Button>
       <Button variant="disabled">Powered by React</Button>
       </ButtonGroup>
     </Container>
