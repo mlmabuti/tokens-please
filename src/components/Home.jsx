@@ -1,17 +1,10 @@
-import {
-  Button,
-  Card,
-  Container,
-  Typography,
-  Paper,
-  Grid,
-  Alert,
-} from "@mui/material/";
-import TokenizerIcon from "@mui/icons-material/Toll";
-import ParserIcon from "@mui/icons-material/ManageSearch";
-import AnalyzerIcon from "@mui/icons-material/Spellcheck";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Card, Container, Typography, Paper, Grid } from "@mui/material/";
 import Reader from "./Reader";
+import BtnClear from "./BtnClear";
+import BtnAnalyzer from "./BtnAnalyzer";
+import BtnParser from "./BtnParser";
+import BtnTokenizer from "./BtnTokenizer";
+import Information from "./Information";
 
 let output = "";
 let input = "";
@@ -20,11 +13,7 @@ function Home() {
   return (
     <Container>
       <Paper elevation={4} sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
-        <Alert icon={false} severity="info" sx={{ marginBottom: "2%" }}>
-          {"ℹ️ Tokens, Please! is a code analyzer based on the first three stages of the compilation process. " +
-            "This program only accounts for declarations and assignment operations. Here is the list of recognized data types; " +
-            "String, int, char, boolean, double, and float. ✨"}
-        </Alert>
+        <Information />
 
         <Grid container spacing={1} justifyContent="center" alignItems="center">
           <Grid item>
@@ -32,9 +21,7 @@ function Home() {
           </Grid>
 
           <Grid item>
-            <Button variant="contained" color="error">
-              <ClearIcon /> Clear
-            </Button>
+            <BtnClear />
           </Grid>
         </Grid>
 
@@ -46,33 +33,15 @@ function Home() {
           sx={{ marginTop: "1%" }}
         >
           <Grid item>
-            <Button
-              variant={"contained"}
-              color="success"
-              endIcon={<TokenizerIcon />}
-            >
-              Lexical Analysis
-            </Button>
+            <BtnTokenizer />
           </Grid>
 
           <Grid item>
-            <Button
-              variant={"contained"}
-              color="success"
-              endIcon={<ParserIcon />}
-            >
-              Syntax Analysis
-            </Button>
+            <BtnParser />
           </Grid>
 
           <Grid item>
-            <Button
-              variant={"contained"}
-              color="success"
-              endIcon={<AnalyzerIcon />}
-            >
-              Semantic Analysis
-            </Button>
+            <BtnAnalyzer />
           </Grid>
         </Grid>
 
