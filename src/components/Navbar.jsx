@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <Container sx={{ margin: "2%" }}>
       <Typography variant="h2" fontWeight="600">
-        Tokens, Please!
+        {"🪙 Tokens, Please! 🪙"}
       </Typography>
     </Container>
   );

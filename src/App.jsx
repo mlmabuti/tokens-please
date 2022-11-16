@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import "@fontsource/roboto/400.css";
 
 function App() {
+
   return (
     <>
       <center>
