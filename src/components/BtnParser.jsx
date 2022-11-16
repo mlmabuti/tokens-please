@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 function BtnParser() {
   return (
-    <Button variant={"contained"} endIcon={<ParserIcon />}>
+    <Button variant={"disabled"} disableElevation endIcon={<ParserIcon />}>
       Syntax Analysis
     </Button>
   );

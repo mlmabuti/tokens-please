@@ -1,4 +1,5 @@
 import { Card, Container, Typography, Paper, Grid } from "@mui/material/";
+import ArrowRight from "@mui/icons-material/ArrowRightAlt";
 import Reader from "./Reader";
 import BtnClear from "./BtnClear";
 import BtnAnalyzer from "./BtnAnalyzer";
@@ -35,9 +36,17 @@ function Home() {
           <Grid item>
             <BtnTokenizer />
           </Grid>
+            
+          <Grid item>
+            <ArrowRight sx={{padding:"1%"}} />
+          </Grid>
 
           <Grid item>
             <BtnParser />
+          </Grid>
+
+          <Grid item>
+            <ArrowRight sx={{padding:"1%"}} />
           </Grid>
 
           <Grid item>

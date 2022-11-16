@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 function BtnTokenizer() {
   return (
-    <Button variant={"contained"} endIcon={<TokenizerIcon />}>
+    <Button variant={"disabled"} disableElevation endIcon={<TokenizerIcon />}>
       Lexical Analysis
     </Button>
   );

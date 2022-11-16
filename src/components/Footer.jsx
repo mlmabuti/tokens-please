@@ -1,16 +1,19 @@
-import { Link, Container, ButtonGroup, Button } from "@mui/material";
+import { Stack, Link, Container, Button, Typography } from "@mui/material";
 
 function Footer() {
   return (
     <Container>
-      <ButtonGroup >
+        <Stack direction="row" justifyContent="center">
         <Button variant="string"> 
         <Link href="https://github.com/axojolotl/tokens-please" color="inherit" underline="hover">
          {"GitHub"}
         </Link>
         </Button>
-      <Button variant="disabled">Powered by React</Button>
-      </ButtonGroup>
+
+      <Typography color="gray" sx={{margin:"1%"}}>Powered by React</Typography>
+
+          </Stack>        
+
     </Container>
   );
 }

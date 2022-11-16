@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 function BtnAnalyzer() {
   return (
-    <Button variant={"contained"} endIcon={<AnalyzerIcon />}>
+    <Button variant={"disabled"} disableElevation endIcon={<AnalyzerIcon />}>
       Semantic Analysis
     </Button>
   );
