@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input } from "@mui/material";
+import $ from 'jquery'; 
 
 class Reader extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Reader extends Component {
     const reader = new FileReader();
     reader.onload = async (e) => {
       const text = e.target.result;
-      console.log(text);
+      $('.inputBox').html(text); //Set the content of the file into the "Input 🤚"
     };
     reader.readAsText(e.target.files[0]);
   };
