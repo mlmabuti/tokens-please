@@ -55,7 +55,7 @@ function Home() {
         </Grid>
 
         <Typography variant="h5" fontWeight="600" sx={{ marginTop: "2%" }}>
-          Input 🤚
+          Input ✋
         </Typography>
 
         <Card variant="outlined" sx={{ padding: "3%", margin: "1% 0% 2%" }}>
