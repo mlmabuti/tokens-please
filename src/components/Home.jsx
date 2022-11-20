@@ -1,81 +1,88 @@
-import { Card, Container, Typography, Paper, Grid } from "@mui/material/";
+import { React, Component } from "react";
+import { Input, Container, Paper, Grid } from "@mui/material/";
 import ArrowRight from "@mui/icons-material/ArrowRightAlt";
-import Reader from "./Reader";
 import BtnClear from "./BtnClear";
 import BtnAnalyzer from "./BtnAnalyzer";
 import BtnParser from "./BtnParser";
 import BtnTokenizer from "./BtnTokenizer";
 import Information from "./Information";
+import IOBox from "./IOBox";
 
-let output = "";
-let input = "";
+class Home extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      inputText: "",
+    };
+  }
 
-function Home() {
-  return (
-    <Container>
-      <Paper elevation={4} sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
-        <Information />
+  showFile = async (e) => {
+    e.preventDefault();
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target.result;
+      this.setState({ inputText: text });
+    };
+    reader.readAsText(e.target.files[0]);
+  };
 
-        <Grid container spacing={1} justifyContent="center" alignItems="center">
-          <Grid item>
-            <Reader />
-          </Grid>
+  render = () => {
+    return (
+      <>
+        <Container>
+          <Paper elevation={4} sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
+            <Information />
 
-          <Grid item>
-            <BtnClear />
-          </Grid>
-        </Grid>
+            <Grid
+              container
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid item>
+                <Input type="file" onChange={(e) => this.showFile(e)} />
+              </Grid>
 
-        <Grid
-          container
-          spacing={1}
-          justifyContent="center"
-          alignItems="center"
-          sx={{ marginTop: "1%" }}
-        >
-          <Grid item>
-            <BtnTokenizer />
-          </Grid>
-            
-          <Grid item>
-            <ArrowRight sx={{padding:"1%"}} />
-          </Grid>
+              <Grid item>
+                <BtnClear />
+              </Grid>
+            </Grid>
 
-          <Grid item>
-            <BtnParser />
-          </Grid>
+            <Grid
+              container
+              spacing={1}
+              justifyContent="center"
+              alignItems="center"
+              sx={{ marginTop: "1%" }}
+            >
+              <Grid item>
+                <BtnTokenizer />
+              </Grid>
 
-          <Grid item>
-            <ArrowRight sx={{padding:"1%"}} />
-          </Grid>
+              <Grid item>
+                <ArrowRight sx={{ padding: "1%" }} />
+              </Grid>
 
-          <Grid item>
-            <BtnAnalyzer />
-          </Grid>
-        </Grid>
+              <Grid item>
+                <BtnParser />
+              </Grid>
 
-        <Typography variant="h5" fontWeight="600" sx={{ marginTop: "2%" }}>
-          Input 🤚
-        </Typography>
+              <Grid item>
+                <ArrowRight sx={{ padding: "1%" }} />
+              </Grid>
 
-        <Card variant="outlined" sx={{ padding: "3%", margin: "1% 0% 2%" }}>
-          <Typography fontFamily="roboto" fontSize="1rem" className="inputBox">
-            {input}
-          </Typography>
-        </Card>
+              <Grid item>
+                <BtnAnalyzer />
+              </Grid>
+            </Grid>
 
-        <Typography variant="h5" fontWeight="600" sx={{ marginTop: "2%" }}>
-          Output 🧾
-        </Typography>
-
-        <Card variant="outlined" sx={{ padding: "3%", margin: "1% 0% 2%" }}>
-          <Typography fontFamily="roboto" fontSize="1rem">
-            {output}
-          </Typography>
-        </Card>
-      </Paper>
-    </Container>
-  );
+            <IOBox title="Input ✋" text={this.state.inputText} />
+            <IOBox title="Output 🧾" text={""} />
+          </Paper>
+        </Container>
+      </>
+    );
+  };
 }
 
 export default Home;
