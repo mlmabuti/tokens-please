@@ -2,13 +2,14 @@ import { React, Component } from "react";
 import { Button, Input, Container, Paper, Grid } from "@mui/material/";
 import ArrowRight from "@mui/icons-material/ArrowRightAlt";
 import ClearIcon from "@mui/icons-material/Clear";
-import BtnAnalyzer from "./BtnAnalyzer";
+import AnalyzerIcon from "@mui/icons-material/Spellcheck";
 import TokenizerIcon from "@mui/icons-material/Toll";
 import Information from "./Information";
 import IOBox from "./IOBox";
 import { lex, tokenize } from "../utils/tokenizer";
 import ParserIcon from "@mui/icons-material/ManageSearch";
 import parse from "../utils/parser";
+import analyze from "../utils/analyze";
 
 class Home extends Component {
   constructor(props) {
@@ -18,16 +19,23 @@ class Home extends Component {
       outputText: "",
       toggleTokenizer: "disabled",
       toggleParser: "disabled",
-      toggleAnalyser: "disabled",
+      toggleAnalyzer: "disabled",
+      toggleInput: true,
+      toggleClear: "disabled",
     };
   }
 
-  showFile = async (e) => {
+  readFile = async (e) => {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
       const text = e.target.result;
-      this.setState({ inputText: text, toggleTokenizer: "contained" });
+      this.setState({
+        inputText: text,
+        toggleTokenizer: "contained",
+        toggleInput: false,
+        toggleClear: "contained",
+      });
     };
     reader.readAsText(e.target.files[0]);
   };
@@ -46,13 +54,17 @@ class Home extends Component {
               alignItems="center"
             >
               <Grid item>
-                <Input type="file" onChange={(e) => this.showFile(e)} />
+                {this.state.toggleInput ? (
+                  <Input type="file" onChange={(e) => this.readFile(e)} />
+                ) : (
+                  <Input type="file" disabled />
+                )}
               </Grid>
 
               <Grid item>
                 <Button
-                  variant="contained"
-                  color="warning"
+                  variant={this.state.toggleClear}
+                  color="error"
                   onClick={() => window.location.reload()}
                 >
                   <ClearIcon /> Clear
@@ -90,15 +102,18 @@ class Home extends Component {
                 <Button
                   variant={this.state.toggleParser}
                   endIcon={<ParserIcon />}
-                  onClick={() =>
+                  onClick={() => {
                     this.setState({
                       outputText: String(
                         parse(tokenize(lex(this.state.inputText)))
                           ? "The syntax is correct!"
                           : "The syntax is incorrect!"
                       ),
-                    })
-                  }
+                    });
+                    parse(tokenize(lex(this.state.inputText))) === true
+                      ? this.setState({ toggleAnalyzer: "contained" })
+                      : this.setState({ toggleAnalyzer: "disabled" });
+                  }}
                 >
                   Syntax Analysis
                 </Button>
@@ -109,7 +124,19 @@ class Home extends Component {
               </Grid>
 
               <Grid item>
-                <BtnAnalyzer />
+                <Button
+                  variant={this.state.toggleAnalyzer}
+                  endIcon={<AnalyzerIcon />}
+                  onClick={() => {
+                    this.setState({
+                      outputText: analyze(this.state.inputText)
+                        ? "This is semantically correct!"
+                        : "This is semantically incorrect!",
+                    });
+                  }}
+                >
+                  Semantic Analysis
+                </Button>
               </Grid>
             </Grid>
 

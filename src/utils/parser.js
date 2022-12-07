@@ -1,5 +1,4 @@
 function parse(tokens) {
-  // tokens = tokens.split(" ");
   const correctSyntax = [
     [
       "<data_type>",
