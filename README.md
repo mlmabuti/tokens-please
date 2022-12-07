@@ -15,3 +15,7 @@ A single line code analyzer based on the first three stages of the compilation p
 4. Open the terminal from the directory where the repository has been installed.
 5. Run `npm install`
 6. Run `npm start`
+
+# Program Flowchart
+
+![image](./public/flowchart.png)
