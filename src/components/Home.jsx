@@ -1,18 +1,24 @@
 import { React, Component } from "react";
-import { Input, Container, Paper, Grid } from "@mui/material/";
+import { Button, Input, Container, Paper, Grid } from "@mui/material/";
 import ArrowRight from "@mui/icons-material/ArrowRightAlt";
-import BtnClear from "./BtnClear";
+import ClearIcon from "@mui/icons-material/Clear";
 import BtnAnalyzer from "./BtnAnalyzer";
-import BtnParser from "./BtnParser";
-import BtnTokenizer from "./BtnTokenizer";
+import TokenizerIcon from "@mui/icons-material/Toll";
 import Information from "./Information";
 import IOBox from "./IOBox";
+import { lex, tokenize } from "../utils/tokenizer";
+import ParserIcon from "@mui/icons-material/ManageSearch";
+import parse from "../utils/parser";
 
 class Home extends Component {
   constructor(props) {
     super();
     this.state = {
       inputText: "",
+      outputText: "",
+      toggleTokenizer: "disabled",
+      toggleParser: "disabled",
+      toggleAnalyser: "disabled",
     };
   }
 
@@ -21,7 +27,7 @@ class Home extends Component {
     const reader = new FileReader();
     reader.onload = async (e) => {
       const text = e.target.result;
-      this.setState({ inputText: text });
+      this.setState({ inputText: text, toggleTokenizer: "contained" });
     };
     reader.readAsText(e.target.files[0]);
   };
@@ -44,7 +50,13 @@ class Home extends Component {
               </Grid>
 
               <Grid item>
-                <BtnClear />
+                <Button
+                  variant="contained"
+                  color="warning"
+                  onClick={() => window.location.reload()}
+                >
+                  <ClearIcon /> Clear
+                </Button>
               </Grid>
             </Grid>
 
@@ -56,7 +68,18 @@ class Home extends Component {
               sx={{ marginTop: "1%" }}
             >
               <Grid item>
-                <BtnTokenizer />
+                <Button
+                  variant={this.state.toggleTokenizer}
+                  endIcon={<TokenizerIcon />}
+                  onClick={() =>
+                    this.setState({
+                      outputText: tokenize(lex(this.state.inputText)),
+                      toggleParser: "contained",
+                    })
+                  }
+                >
+                  Lexical Analysis
+                </Button>
               </Grid>
 
               <Grid item>
@@ -64,7 +87,21 @@ class Home extends Component {
               </Grid>
 
               <Grid item>
-                <BtnParser />
+                <Button
+                  variant={this.state.toggleParser}
+                  endIcon={<ParserIcon />}
+                  onClick={() =>
+                    this.setState({
+                      outputText: String(
+                        parse(tokenize(lex(this.state.inputText)))
+                          ? "The syntax is correct!"
+                          : "The syntax is incorrect!"
+                      ),
+                    })
+                  }
+                >
+                  Syntax Analysis
+                </Button>
               </Grid>
 
               <Grid item>
@@ -77,7 +114,7 @@ class Home extends Component {
             </Grid>
 
             <IOBox title="Input ✋" text={this.state.inputText} />
-            <IOBox title="Output 🧾" text={""} />
+            <IOBox title="Output 🧾" text={this.state.outputText} />
           </Paper>
         </Container>
       </>
