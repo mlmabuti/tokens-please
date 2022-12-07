@@ -14,7 +14,7 @@ function Footer() {
           </Link>
         </Button>
 
-        <Typography color="gray" sx={{ margin: "1%" }}>
+        <Typography color="gray" sx={{ margin: "2%" }}>
           Powered by React
         </Typography>
       </Stack>

@@ -6,11 +6,9 @@ import "@fontsource/roboto/400.css";
 function App() {
   return (
     <>
-      <center>
-        <Navbar />
-        <Home />
-        <Footer />
-      </center>
+      <Navbar />
+      <Home />
+      <Footer />
     </>
   );
 }

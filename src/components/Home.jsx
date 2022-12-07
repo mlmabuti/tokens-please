@@ -44,7 +44,7 @@ class Home extends Component {
     return (
       <>
         <Container>
-          <Paper elevation={4} sx={{ padding: "4% 4% 4%", margin: "2% 0% 2%" }}>
+          <Paper elevation={10} sx={{ padding: "6%", margin: "2% 0% 2%" }}>
             <Information />
 
             <Grid
