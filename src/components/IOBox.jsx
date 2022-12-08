@@ -14,7 +14,7 @@ export default function IOBox(props) {
               {props.text}
             </Typography>
           ) : (
-            <Typography fontFamily="roboto" fontSize="1rem" className="ioBox">
+            <Typography fontFamily="roboto" fontSize="1.5rem" className="ioBox">
               {props.text}
             </Typography>
           )}

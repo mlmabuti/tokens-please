@@ -4,7 +4,8 @@ import { tokenize, lex } from "./tokenizer.js";
 function analyze(input) {
   if (parse(tokenize(lex(input)))) {
     input = lex(input);
-    if (input.length === 3) return true;
+    input.pop();
+    if (tokenize(input).length === 3) return true;
 
     try {
       const dataType = input[0];
