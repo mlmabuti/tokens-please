@@ -9,15 +9,9 @@ export default function IOBox(props) {
           {props.title}
         </Typography>
         <Card variant="outlined" sx={{ padding: "3%", margin: "1% 0% 2%" }}>
-          {props.title === "Output 🧾" ? (
-            <Typography fontFamily="roboto" fontSize="1.5rem" className="ioBox">
-              {props.text}
-            </Typography>
-          ) : (
-            <Typography fontFamily="roboto" fontSize="1.5rem" className="ioBox">
-              {props.text}
-            </Typography>
-          )}
+          <Typography fontFamily="roboto" fontSize="1.5rem" className="ioBox">
+            {props.text}
+          </Typography>
         </Card>
       </center>
     </>
