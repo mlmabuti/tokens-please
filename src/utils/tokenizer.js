@@ -1,7 +1,6 @@
 function tokenize(lexemes) {
   const dataTypes = ["int", "double", "char", "String", "float", "boolean"];
   const tokens = [];
-  lexemes.pop(); // remove /n
 
   for (const lexeme of lexemes) {
     if (dataTypes.includes(lexeme)) {
@@ -66,6 +65,7 @@ function lex(input) {
     }
   }
   lexemes.push(temp);
+  lexemes.pop();
   return lexemes.filter((n) => n !== "");
 }
 
