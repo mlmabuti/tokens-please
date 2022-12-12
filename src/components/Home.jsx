@@ -1,5 +1,12 @@
 import { React, Component } from "react";
-import { Button, Input, Container, Paper, Grid } from "@mui/material/";
+import {
+  Button,
+  Input,
+  Container,
+  Paper,
+  Grid,
+  TextField,
+} from "@mui/material/";
 import ArrowRight from "@mui/icons-material/ArrowRightAlt";
 import ClearIcon from "@mui/icons-material/Clear";
 import AnalyzerIcon from "@mui/icons-material/Spellcheck";
@@ -22,6 +29,7 @@ class Home extends Component {
       toggleAnalyzer: "disabled",
       toggleInput: true,
       toggleClear: "disabled",
+      isFile: false,
     };
   }
 
@@ -35,6 +43,7 @@ class Home extends Component {
         toggleTokenizer: "contained",
         toggleInput: false,
         toggleClear: "contained",
+        isFile: true,
       });
     };
     reader.readAsText(e.target.files[0]);
@@ -46,6 +55,21 @@ class Home extends Component {
         <Container>
           <Paper elevation={10} sx={{ padding: "6%", margin: "2% 0% 2%" }}>
             <Information />
+            <TextField
+              variant="outlined"
+              placeholder={'String str = "Hello World !";'}
+              fullWidth
+              label="Enter single line code"
+              margin="normal"
+              onChange={(e) => {
+                this.setState({
+                  inputText: e.target.value,
+                  toggleTokenizer: "contained",
+                  toggleClear: "contained",
+                  toggleInput: false,
+                });
+              }}
+            />
 
             <Grid
               container
@@ -85,7 +109,9 @@ class Home extends Component {
                   endIcon={<TokenizerIcon />}
                   onClick={() =>
                     this.setState({
-                      outputText: tokenize(lex(this.state.inputText)),
+                      outputText: tokenize(
+                        lex(this.state.inputText, this.state.isFile)
+                      ),
                       toggleParser: "contained",
                     })
                   }
@@ -110,7 +136,9 @@ class Home extends Component {
                           : "The syntax is incorrect!"
                       ),
                     });
-                    parse(tokenize(lex(this.state.inputText))) === true
+                    parse(
+                      tokenize(lex(this.state.inputText, this.state.isFile))
+                    ) === true
                       ? this.setState({ toggleAnalyzer: "contained" })
                       : this.setState({ toggleAnalyzer: "disabled" });
                   }}

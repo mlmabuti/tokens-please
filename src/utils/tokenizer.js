@@ -1,7 +1,6 @@
 function tokenize(lexemes) {
   const dataTypes = ["int", "double", "char", "String", "float", "boolean"];
   const tokens = [];
-  lexemes.pop(); // remove /n
 
   for (const lexeme of lexemes) {
     if (dataTypes.includes(lexeme)) {
@@ -26,7 +25,7 @@ function tokenize(lexemes) {
   return tokens;
 }
 
-function lex(input) {
+function lex(input, isFile) {
   const individualChars = input.split("");
 
   const lexemes = [];
@@ -66,6 +65,7 @@ function lex(input) {
     }
   }
   lexemes.push(temp);
+  if (isFile) lexemes.pop(); // remove /n
   return lexemes.filter((n) => n !== "");
 }
 
