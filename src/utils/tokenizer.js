@@ -25,7 +25,7 @@ function tokenize(lexemes) {
   return tokens;
 }
 
-function lex(input) {
+function lex(input, isFile) {
   const individualChars = input.split("");
 
   const lexemes = [];
@@ -65,7 +65,7 @@ function lex(input) {
     }
   }
   lexemes.push(temp);
-  lexemes.pop();
+  if (isFile) lexemes.pop(); // remove /n
   return lexemes.filter((n) => n !== "");
 }
 
