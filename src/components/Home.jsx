@@ -131,7 +131,9 @@ class Home extends Component {
                   onClick={() => {
                     this.setState({
                       outputText: String(
-                        parse(tokenize(lex(this.state.inputText)))
+                        parse(
+                          tokenize(lex(this.state.inputText, this.state.isFile))
+                        )
                           ? "The syntax is correct!"
                           : "The syntax is incorrect!"
                       ),
@@ -157,7 +159,10 @@ class Home extends Component {
                   endIcon={<AnalyzerIcon />}
                   onClick={() => {
                     this.setState({
-                      outputText: analyze(this.state.inputText)
+                      outputText: analyze(
+                        this.state.inputText,
+                        this.state.isFile
+                      )
                         ? "This is semantically correct!"
                         : "This is semantically incorrect!",
                     });
