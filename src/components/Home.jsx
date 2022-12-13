@@ -30,6 +30,7 @@ class Home extends Component {
       toggleInput: true,
       toggleClear: "disabled",
       isFile: false,
+      toggleTextField: false,
     };
   }
 
@@ -44,6 +45,7 @@ class Home extends Component {
         toggleInput: false,
         toggleClear: "contained",
         isFile: true,
+        toggleTextField: true,
       });
     };
     reader.readAsText(e.target.files[0]);
@@ -58,6 +60,7 @@ class Home extends Component {
             <TextField
               variant="outlined"
               placeholder={'String str = "Hello World !";'}
+              disabled={this.state.toggleTextField}
               fullWidth
               label="Enter single line code"
               margin="normal"
@@ -67,6 +70,8 @@ class Home extends Component {
                   toggleTokenizer: "contained",
                   toggleClear: "contained",
                   toggleInput: false,
+                  toggleParser: "disabled",
+                  toggleAnalyzer: "disabled",
                 });
               }}
             />
@@ -113,6 +118,7 @@ class Home extends Component {
                         lex(this.state.inputText, this.state.isFile)
                       ),
                       toggleParser: "contained",
+                      toggleTokenizer: "disabled",
                     })
                   }
                 >
@@ -141,7 +147,10 @@ class Home extends Component {
                     parse(
                       tokenize(lex(this.state.inputText, this.state.isFile))
                     ) === true
-                      ? this.setState({ toggleAnalyzer: "contained" })
+                      ? this.setState({
+                          toggleAnalyzer: "contained",
+                          toggleParser: "disabled",
+                        })
                       : this.setState({ toggleAnalyzer: "disabled" });
                   }}
                 >
@@ -165,6 +174,12 @@ class Home extends Component {
                       )
                         ? "This is semantically correct!"
                         : "This is semantically incorrect!",
+                      toggleAnalyzer: analyze(
+                        this.state.inputText,
+                        this.state.isFile
+                      )
+                        ? "disabled"
+                        : "contained",
                     });
                   }}
                 >
